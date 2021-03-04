@@ -1,0 +1,467 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Everis_LaPositiva_NotificarCorreo" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_SystemError" Type="InArgument(s:Exception)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_ScreenShotFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_IdCorreo" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_DataOV" Type="InArgument(sd:DataRow)" />
+    <x:Property Name="in_Solicitud" Type="InArgument(x:String)" />
+    <x:Property Name="in_Producto" Type="InArgument(x:String)" />
+    <x:Property Name="in_Poliza" Type="InArgument(x:String)" />
+    <x:Property Name="in_Tramite" Type="InArgument(x:String)" />
+    <x:Property Name="in_Estado" Type="InArgument(x:String)" />
+    <x:Property Name="in_BandejaDerivada" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Everis_LaPositiva_NotificarCorreo.in_IdCorreo>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:Everis_LaPositiva_NotificarCorreo.in_IdCorreo>
+  <this:Everis_LaPositiva_NotificarCorreo.in_Solicitud>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Everis_LaPositiva_NotificarCorreo.in_Solicitud>
+  <this:Everis_LaPositiva_NotificarCorreo.in_Producto>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Everis_LaPositiva_NotificarCorreo.in_Producto>
+  <this:Everis_LaPositiva_NotificarCorreo.in_Poliza>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Everis_LaPositiva_NotificarCorreo.in_Poliza>
+  <this:Everis_LaPositiva_NotificarCorreo.in_Tramite>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Everis_LaPositiva_NotificarCorreo.in_Tramite>
+  <this:Everis_LaPositiva_NotificarCorreo.in_Estado>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Everis_LaPositiva_NotificarCorreo.in_Estado>
+  <this:Everis_LaPositiva_NotificarCorreo.in_BandejaDerivada>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Everis_LaPositiva_NotificarCorreo.in_BandejaDerivada>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>983,2236</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Everis_LaPositiva_NotificarCorreo_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="48">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Net</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="42">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Everis_LaPositiva_NotificarCorreo" sap:VirtualizedContainerService.HintSize="623,2071" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="DataMatrizCorreo" />
+      <Variable x:TypeArguments="x:Int32" Name="IDMatrizCorreo" />
+      <Variable x:TypeArguments="sd:DataRow[]" Name="DataFilaCorreo" />
+      <Variable x:TypeArguments="x:String" Name="UltimaLineaLog" />
+      <Variable x:TypeArguments="x:String" Name="MensajeError" />
+      <Variable x:TypeArguments="x:String" Name="DataLog" />
+      <Variable x:TypeArguments="s:String[]" Name="LineaFragmentada" />
+      <Variable x:TypeArguments="x:String" Name="Framework" />
+      <Variable x:TypeArguments="x:String" Name="Proceso" />
+      <Variable x:TypeArguments="x:String" Name="Robot" />
+      <Variable x:TypeArguments="x:String" Name="EntidadFinanciera" />
+      <Variable x:TypeArguments="x:String" Name="Machine" />
+      <Variable x:TypeArguments="x:String" Name="UserRobot" />
+      <Variable x:TypeArguments="ui:GenericValue" Name="Ambiente" />
+      <Variable x:TypeArguments="x:String" Name="UserCorreo" />
+      <Variable x:TypeArguments="x:String" Name="PasswordCorreo" />
+      <Variable x:TypeArguments="ss:SecureString" Name="Password" />
+      <Variable x:TypeArguments="x:Boolean" Default="False" Name="EstadoCorreo" />
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="CantidadReintentos" />
+      <Variable x:TypeArguments="s:Exception" Name="ExceptionError" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetAppCredentials workflow" sap:VirtualizedContainerService.HintSize="581,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\GetAppCredentials.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Username">[UserCorreo]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Credential">[in_Config("CredencialCorreoRobot").ToString]</InArgument>
+        <OutArgument x:TypeArguments="ss:SecureString" x:Key="out_Password">[Password]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <Assign sap:VirtualizedContainerService.HintSize="581,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[PasswordCorreo]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[new system.Net.NetworkCredential(string.Empty,Password).Password]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="581,222" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[Framework]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_Config("Framework").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[Proceso]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_Config("Proceso").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[Robot]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_Config("Robot").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[Machine]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[Environment.MachineName]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[UserRobot]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[Environment.UserName]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <If Condition="[in_SystemError IsNot Nothing]" sap:VirtualizedContainerService.HintSize="581,51" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[MensajeError]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_SystemError.Message]</InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Then>
+    </If>
+    <ui:ReadRange AddHeaders="True" DataTable="[DataMatrizCorreo]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="581,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[in_Config(&quot;HojaParametroCorreo&quot;).ToString]" WorkbookPath="[in_Config(&quot;RutaRaizCompartida&quot;).ToString+in_Config(&quot;RutaMatrizParametros&quot;).ToString+in_Config(&quot;NombreArchivoMatrizCorreo&quot;).ToString+in_Config(&quot;extensionXLSX&quot;).ToString]">
+      <ui:ReadRange.Range>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </ui:ReadRange.Range>
+    </ui:ReadRange>
+    <Assign sap:VirtualizedContainerService.HintSize="581,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="sd:DataRow[]">[DataFilaCorreo]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="sd:DataRow[]">[DataMatrizCorreo.Select("[ID] = '"+in_IdCorreo.ToString+"'")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <While sap:VirtualizedContainerService.HintSize="581,1147" sap2010:WorkflowViewState.IdRef="While_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <While.Condition>[EstadoCorreo.Equals(False) and CantidadReintentos&lt;Convert.ToInt32(in_Config("CantidadReintentosEnviarCorreo").ToString)]</While.Condition>
+      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="535,989" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+        <TryCatch.Try>
+          <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[in_IdCorreo]" sap:VirtualizedContainerService.HintSize="497,762" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence x:Key="1" DisplayName="Notificación de Trámites " sap:VirtualizedContainerService.HintSize="376,468" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:SendMail Bcc="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Estimado asesor,&quot;+Environment.NewLine+Environment.NewLine+String.Format(DataFilaCorreo(0).Item(&quot;Body&quot;).ToString,in_Solicitud,in_Producto,in_Tramite,in_Estado,in_BandejaDerivada)+Environment.NewLine+Environment.NewLine+&quot;Atte:&quot;+Environment.NewLine+&quot;Área de Operaciones&quot;]" Cc="[DataFilaCorreo(0).Item(&quot;CC&quot;).ToString]" DisplayName="Send SMTP - Notificación fin ejecución" Email="[UserCorreo]" EnableSSL="True" From="rpabot@lapositiva.com.pe" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendMail_10" IsBodyHtml="False" Password="[PasswordCorreo]" Port="[Integer.Parse(in_Config(&quot;Port&quot;).ToString)]" SecureConnection="Auto" Server="[in_Config(&quot;Server&quot;).ToString]" Subject="[String.Format(DataFilaCorreo(0).Item(&quot;Subject&quot;).ToString, Framework, Proceso, Robot, Datetime.Now.ToString(&quot;dd/MM/yyyy&quot;))]" To="[in_DataOV.Item(34).ToString]">
+                <ui:SendMail.Files>
+                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+                </ui:SendMail.Files>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:SendMail>
+              <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Boolean">[EstadoCorreo]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Reintento&quot; + CantidadReintentos.ToString]" />
+            </Sequence>
+            <Sequence x:Key="2" DisplayName="Inicio de Ejecución" sap:VirtualizedContainerService.HintSize="376,468" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:SendMail Bcc="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Estimado usuario,&quot;+Environment.NewLine+Environment.NewLine+String.Format(DataFilaCorreo(0).Item(&quot;Body&quot;).ToString, in_Config(&quot;NombreProceso&quot;).ToString,Datetime.Now.ToString, Machine, UserRobot)+Environment.NewLine+Environment.NewLine+&quot;Atte:&quot;+Environment.NewLine+&quot;Área de Operaciones&quot;]" Cc="[DataFilaCorreo(0).Item(&quot;CC&quot;).ToString]" DisplayName="Send SMTP - Notificación Inicio de ejecución" Email="[UserCorreo]" EnableSSL="True" From="Robot@lapositiva.com" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendMail_11" IsBodyHtml="False" Password="[PasswordCorreo]" Port="[Integer.Parse(in_Config(&quot;Port&quot;).ToString)]" SecureConnection="Auto" Server="[in_Config(&quot;Server&quot;).ToString]" Subject="[String.Format(DataFilaCorreo(0).Item(&quot;Subject&quot;).ToString, Framework, Proceso, EntidadFinanciera)]" To="[DataFilaCorreo(0).Item(&quot;To&quot;).ToString]">
+                <ui:SendMail.Files>
+                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                </ui:SendMail.Files>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:SendMail>
+              <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Boolean">[EstadoCorreo]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Reintento&quot; + CantidadReintentos.ToString]" />
+            </Sequence>
+            <Sequence x:Key="3" sap:VirtualizedContainerService.HintSize="376,66" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:SendMail Bcc="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Estimado usuario,&quot;+Environment.NewLine+Environment.NewLine+String.Format(DataFilaCorreo(0).Item(&quot;Body&quot;).ToString, Robot, LineaFragmentada(1), Datetime.Now.ToString, Machine, UserRobot)+Environment.NewLine+Environment.NewLine+&quot;Atte:&quot;+Environment.NewLine+&quot;Área Tesorería&quot;]" Cc="[DataFilaCorreo(0).Item(&quot;CC&quot;).ToString]" DisplayName="Send SMTP - Notificación fin ejecución" Email="[UserCorreo]" EnableSSL="True" From="Robot@lapositiva.com" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendMail_12" IsBodyHtml="False" Password="[PasswordCorreo]" Port="[Integer.Parse(in_Config(&quot;Port&quot;).ToString)]" SecureConnection="Auto" Server="[in_Config(&quot;Server&quot;).ToString]" Subject="[String.Format(DataFilaCorreo(0).Item(&quot;Subject&quot;).ToString, Framework, Proceso, EntidadFinanciera)]" To="[DataFilaCorreo(0).Item(&quot;To&quot;).ToString]">
+                <ui:SendMail.Files>
+                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                    <InArgument x:TypeArguments="x:String">[in_ScreenShotFilePath]</InArgument>
+                  </scg:List>
+                </ui:SendMail.Files>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:SendMail>
+              <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Boolean">[EstadoCorreo]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Reintento&quot; + CantidadReintentos.ToString]" />
+            </Sequence>
+            <Sequence x:Key="4" sap:VirtualizedContainerService.HintSize="376,374" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:SendMail Bcc="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Estimado usuario,&quot;+Environment.NewLine+Environment.NewLine+String.Format(DataFilaCorreo(0).Item(&quot;Body&quot;).ToString, Robot, LineaFragmentada(3), Datetime.Now.ToString, Machine, UserRobot)+Environment.NewLine+Environment.NewLine+&quot;Atte:&quot;+Environment.NewLine+&quot;Área Tesorería&quot;]" Cc="[DataFilaCorreo(0).Item(&quot;CC&quot;).ToString]" DisplayName="Send SMTP - Error en Archivo" Email="[UserCorreo]" EnableSSL="True" From="Robot@lapositiva.com" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="SendMail_13" IsBodyHtml="False" Password="[PasswordCorreo]" Port="[Integer.Parse(in_Config(&quot;Port&quot;).ToString)]" SecureConnection="Auto" Server="[in_Config(&quot;Server&quot;).ToString]" Subject="[String.Format(DataFilaCorreo(0).Item(&quot;Subject&quot;).ToString, Framework, Proceso, EntidadFinanciera)]" To="[DataFilaCorreo(0).Item(&quot;To&quot;).ToString]">
+                <ui:SendMail.Files>
+                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                </ui:SendMail.Files>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:SendMail>
+              <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Boolean">[EstadoCorreo]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Reintento&quot; + CantidadReintentos.ToString]" />
+            </Sequence>
+            <Sequence x:Key="5" sap:VirtualizedContainerService.HintSize="376,374" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:SendMail Bcc="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Estimado usuario,&quot;+Environment.NewLine+Environment.NewLine+String.Format(DataFilaCorreo(0).Item(&quot;Body&quot;).ToString, Robot, LineaFragmentada(1), Datetime.Now.ToString, Machine, UserRobot)+Environment.NewLine+Environment.NewLine+&quot;Atte:&quot;+Environment.NewLine+&quot;Área Tesorería&quot;]" Cc="[DataFilaCorreo(0).Item(&quot;CC&quot;).ToString]" DisplayName="Send SMTP - Notificación fin ejecución" Email="[UserCorreo]" EnableSSL="True" From="Robot@lapositiva.com" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="SendMail_14" IsBodyHtml="False" Password="[PasswordCorreo]" Port="[Integer.Parse(in_Config(&quot;Port&quot;).ToString)]" SecureConnection="Auto" Server="[in_Config(&quot;Server&quot;).ToString]" Subject="[String.Format(DataFilaCorreo(0).Item(&quot;Subject&quot;).ToString, Framework, Proceso, EntidadFinanciera)]" To="[DataFilaCorreo(0).Item(&quot;To&quot;).ToString]">
+                <ui:SendMail.Files>
+                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                    <InArgument x:TypeArguments="x:String">[in_ScreenShotFilePath]</InArgument>
+                  </scg:List>
+                </ui:SendMail.Files>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:SendMail>
+              <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_12">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Boolean">[EstadoCorreo]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Reintento&quot; + CantidadReintentos.ToString]" />
+            </Sequence>
+            <Sequence x:Key="6" sap:VirtualizedContainerService.HintSize="376,468" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:SendMail Bcc="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Estimado usuario,&quot;+Environment.NewLine+Environment.NewLine+String.Format(DataFilaCorreo(0).Item(&quot;Body&quot;).ToString, Robot, Datetime.Now.ToString, Machine, UserRobot)+Environment.NewLine+Environment.NewLine+&quot;Atte:&quot;+Environment.NewLine+&quot;Área Tesorería&quot;]" Cc="[DataFilaCorreo(0).Item(&quot;CC&quot;).ToString]" DisplayName="Send SMTP - Notificación fin ejecución" Email="[UserCorreo]" EnableSSL="True" From="Robot@lapositiva.com" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendMail_15" IsBodyHtml="False" Password="[PasswordCorreo]" Port="[Integer.Parse(in_Config(&quot;Port&quot;).ToString)]" SecureConnection="Auto" Server="[in_Config(&quot;Server&quot;).ToString]" Subject="[String.Format(DataFilaCorreo(0).Item(&quot;Subject&quot;).ToString, Framework, Proceso, EntidadFinanciera)]" To="[DataFilaCorreo(0).Item(&quot;To&quot;).ToString]">
+                <ui:SendMail.Files>
+                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+                </ui:SendMail.Files>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:SendMail>
+              <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Boolean">[EstadoCorreo]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Reintento&quot; + CantidadReintentos.ToString]" />
+            </Sequence>
+          </Switch>
+        </TryCatch.Try>
+        <TryCatch.Catches>
+          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="501,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ActivityAction x:TypeArguments="s:Exception">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Exception" sap:VirtualizedContainerService.HintSize="376,673" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="s:Exception">[ExceptionError]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="s:Exception">[exception]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Error" Message="[&quot;Se presentó el siguiente error: &quot;+ExceptionError.Message]" />
+                <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Boolean">[EstadoCorreo]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[CantidadReintentos]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">[CantidadReintentos+1]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Error" Message="[CantidadReintentos.ToString]" />
+                <Delay Duration="00:00:30" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
+              </Sequence>
+            </ActivityAction>
+          </Catch>
+        </TryCatch.Catches>
+      </TryCatch>
+    </While>
+  </Sequence>
+</Activity>

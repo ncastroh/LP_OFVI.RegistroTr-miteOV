@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>980,2208</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1004,2300</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>LP_OFVI_Web_BandejaDerivación_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -71,10 +71,10 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="LP_OFVI_Web_BandejaDerivación" sap:VirtualizedContainerService.HintSize="526,2043" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="LP_OFVI_Web_BandejaDerivación" sap:VirtualizedContainerService.HintSize="563,2135" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="v_PopUpRegistro" />
       <Variable x:TypeArguments="x:Boolean" Name="v_PopUpImpresion" />
@@ -84,7 +84,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Web - Derivar Bandeja" sap:VirtualizedContainerService.HintSize="484,517" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence DisplayName="Web - Derivar Bandeja" sap:VirtualizedContainerService.HintSize="521,517" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -153,7 +153,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:BrowserScope>
     </Sequence>
-    <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="5">
+    <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="521,51" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="5">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
           <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_4">
@@ -189,7 +189,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:RetryScope>
-    <If Condition="[v_PopUpRegistro.Equals(True)]" DisplayName="If Existe PopUp se registro Solicitud?" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[v_PopUpRegistro.Equals(True)]" DisplayName="If Existe PopUp se registro Solicitud?" sap:VirtualizedContainerService.HintSize="521,51" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -221,7 +221,7 @@
         </ui:Click>
       </If.Then>
     </If>
-    <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="5">
+    <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="521,51" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="5">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
           <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_5">
@@ -257,7 +257,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:RetryScope>
-    <If Condition="[v_PopUpImpresion.Equals(True)]" DisplayName="If Existe PopUp Impresión?" sap:VirtualizedContainerService.HintSize="484,254" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[v_PopUpImpresion.Equals(True)]" DisplayName="If Existe PopUp Impresión?" sap:VirtualizedContainerService.HintSize="521,346" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -265,31 +265,38 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Button'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
-          <ui:Click.CursorPosition>
-            <ui:CursorPosition Position="Center">
-              <ui:CursorPosition.OffsetX>
-                <InArgument x:TypeArguments="x:Int32" />
-              </ui:CursorPosition.OffsetX>
-              <ui:CursorPosition.OffsetY>
-                <InArgument x:TypeArguments="x:Int32" />
-              </ui:CursorPosition.OffsetY>
-            </ui:CursorPosition>
-          </ui:Click.CursorPosition>
-          <ui:Click.Target>
-            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0b9798fd-35cd-4b3c-9ab9-5e1ecc742c2a" InformativeScreenshot="d5bd007df26a426849a89195dd2796ed" Selector="&lt;wnd app='iexplore.exe' omit:cls='#32770' omit:title='Mensaje de página web' /&gt;&lt;wnd omit:aaname='Mensaje de página web' omit:cls='DirectUIHWND' /&gt;&lt;wnd cls='Button' title='Cancelar' /&gt;">
-              <ui:Target.TimeoutMS>
-                <InArgument x:TypeArguments="x:Int32" />
-              </ui:Target.TimeoutMS>
-              <ui:Target.WaitForReady>
-                <InArgument x:TypeArguments="ui:WaitForReady" />
-              </ui:Target.WaitForReady>
-            </ui:Target>
-          </ui:Click.Target>
-        </ui:Click>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Button'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT">
+            <ui:Click.CursorPosition>
+              <ui:CursorPosition Position="Center">
+                <ui:CursorPosition.OffsetX>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetX>
+                <ui:CursorPosition.OffsetY>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetY>
+              </ui:CursorPosition>
+            </ui:Click.CursorPosition>
+            <ui:Click.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9ecf5df5-90b9-487c-9209-bfedc59fdd5b" InformativeScreenshot="f2669291af23768f09802eb533874a9d" Selector="&lt;wnd app='iexplore.exe' cls='#32770' title='Mensaje de página web' /&gt;&lt;wnd aaname='Mensaje de página web' cls='DirectUIHWND' /&gt;&lt;wnd cls='Button' title='Cancelar' /&gt;">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:Click.Target>
+          </ui:Click>
+        </Sequence>
       </If.Then>
     </If>
-    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Nro Trámite'" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="GetValue_1">
+    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Nro Trámite'" sap:VirtualizedContainerService.HintSize="521,106" sap2010:WorkflowViewState.IdRef="GetValue_1">
       <ui:GetValue.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2432c80d-b7d7-4e67-8cc9-3aefd3f3ca1c" InformativeScreenshot="7d6ed72de3310bd01673ed3509b42a2f" Selector="&lt;html title='Detalle Formulario Genérico' /&gt;&lt;webctrl parentid='dtLsTramGen' tag='TABLE' /&gt;&lt;webctrl tableCol='3' tag='TD' /&gt;">
           <ui:Target.TimeoutMS>
@@ -304,7 +311,7 @@
         <OutArgument x:TypeArguments="x:String">[io_NroTramite]</OutArgument>
       </ui:GetValue.Value>
     </ui:GetValue>
-    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Nro Solicitud'" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="GetValue_2">
+    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Nro Solicitud'" sap:VirtualizedContainerService.HintSize="521,106" sap2010:WorkflowViewState.IdRef="GetValue_2">
       <ui:GetValue.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fbcff4d9-1dc1-4229-a2b1-36e8ee6d9be8" InformativeScreenshot="8c3cc1b46fdccc769d95df10c92bb55b" Selector="&lt;html title='Detalle Formulario Genérico' /&gt;&lt;webctrl css-selector='body&amp;gt;form&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table' idx='1' parentname='frmSolicitud' tag='TABLE' /&gt;&lt;webctrl idx='1' tableCol='2' tag='TD' /&gt;">
           <ui:Target.TimeoutMS>
@@ -319,7 +326,7 @@
         <OutArgument x:TypeArguments="x:String">[io_NroSolicitud]</OutArgument>
       </ui:GetValue.Value>
     </ui:GetValue>
-    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Fecha'" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="GetValue_3">
+    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Fecha'" sap:VirtualizedContainerService.HintSize="521,106" sap2010:WorkflowViewState.IdRef="GetValue_3">
       <ui:GetValue.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="84825aee-bec8-427c-aecc-78dd88986380" InformativeScreenshot="16e0a704cd3cac77c83516c7e646c2f0" Selector="&lt;html title='Detalle Formulario Genérico' /&gt;&lt;webctrl css-selector='body&amp;gt;form&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table' idx='1' parentname='frmSolicitud' tag='TABLE' /&gt;&lt;webctrl tableCol='2' tableRow='2' tag='TD' /&gt;">
           <ui:Target.TimeoutMS>
@@ -334,7 +341,7 @@
         <OutArgument x:TypeArguments="x:String">[in_FechaRegistro]</OutArgument>
       </ui:GetValue.Value>
     </ui:GetValue>
-    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Hora'" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="GetValue_4">
+    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Hora'" sap:VirtualizedContainerService.HintSize="521,106" sap2010:WorkflowViewState.IdRef="GetValue_4">
       <ui:GetValue.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2cc4fb1a-182b-436d-98e8-92fc26b810c1" InformativeScreenshot="80ec13e711d99aaf41c149af379bedad" Selector="&lt;html title='Detalle Formulario Genérico' /&gt;&lt;webctrl css-selector='body&amp;gt;form&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table' idx='1' parentname='frmSolicitud' tag='TABLE' /&gt;&lt;webctrl tableCol='2' tableRow='3' tag='TD' /&gt;">
           <ui:Target.TimeoutMS>
@@ -349,7 +356,7 @@
         <OutArgument x:TypeArguments="x:String">[in_HoraRegistro]</OutArgument>
       </ui:GetValue.Value>
     </ui:GetValue>
-    <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="521,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[in_EstadoRegistro]</OutArgument>
       </Assign.To>
@@ -357,7 +364,7 @@
         <InArgument x:TypeArguments="x:String">[in_Config("Generado").ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Notificar correo al Asesor" DisplayName="Invoke LP.NotificarCorreo workflow" sap:VirtualizedContainerService.HintSize="484,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Correo\LP.NotificarCorreo.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Notificar correo al Asesor" DisplayName="Invoke LP.NotificarCorreo workflow" sap:VirtualizedContainerService.HintSize="521,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Correo\LP.NotificarCorreo.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemError">[Nothing]</InArgument>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>

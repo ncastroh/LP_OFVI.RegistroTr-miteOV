@@ -1,13 +1,16 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Initialize_Applications" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:c="clr-namespace:Componentes_Reutilizables;assembly=Componentes Reutilizables" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Initialize_Applications" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:c="clr-namespace:Componentes_Reutilizables;assembly=Componentes Reutilizables" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="out_DataOV" Type="OutArgument(sd:DataTable)" />
-    <x:Property Name="out_SystemError" Type="OutArgument(s:Exception)" />
+    <x:Property Name="in_EnviarCorreo" Type="InArgument(x:Boolean)" />
   </x:Members>
+  <this:Initialize_Applications.in_EnviarCorreo>
+    <InArgument x:TypeArguments="x:Boolean" />
+  </this:Initialize_Applications.in_EnviarCorreo>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>983,856</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1004,1004</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="38">
@@ -88,10 +91,9 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
       <AssemblyReference>Componentes Reutilizables</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="376,691" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="526,839" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="v_Username" />
       <Variable x:TypeArguments="ss:SecureString" Name="v_Password" />
@@ -110,8 +112,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
-    <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
+    <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[v_IdCorreo]</OutArgument>
       </Assign.To>
@@ -119,50 +121,32 @@
         <InArgument x:TypeArguments="x:Int32">[Integer.Parse(in_Config("Correo_InicioEjecucion").ToString)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke LP.NotificarCorreo workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Correo\LP.NotificarCorreo.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemError">
-          <mva:VisualBasicValue x:TypeArguments="s:Exception" ExpressionText="Nothing" />
-        </InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ScreenShotFilePath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Nothing" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_IdCorreo">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="v_IdCorreo" />
-        </InArgument>
-        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_DataOV">
-          <mva:VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="Nothing" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Solicitud">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Nothing" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Producto">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Nothing" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Poliza">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Nothing" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Tramite">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Nothing" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Estado">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Nothing" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_BandejaDerivada">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Nothing" />
-        </InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetAppCredentials workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\GetAppCredentials.xaml">
+    <If Condition="[in_EnviarCorreo.Equals(True)]" sap:VirtualizedContainerService.HintSize="484,260" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke LP.NotificarCorreo workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Correo\LP.NotificarCorreo.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemError">[Nothing]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_ScreenShotFilePath">[Nothing]</InArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="in_IdCorreo">[v_IdCorreo]</InArgument>
+            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_DataOV">[Nothing]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Solicitud">[Nothing]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Producto">[Nothing]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Poliza">[Nothing]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Tramite">[Nothing]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Estado">[Nothing]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_BandejaDerivada">[Nothing]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </If.Then>
+    </If>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetAppCredentials workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\GetAppCredentials.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="x:String" x:Key="out_Username">[v_Username]</OutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Credential">[in_Config("CredentialOV").ToString]</InArgument>
         <OutArgument x:TypeArguments="ss:SecureString" x:Key="out_Password">[v_Password]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <c:LoginOV sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="LoginOV_1" in_Password="[v_Password]" in_RutaAplicativo="[in_Config(&quot;RutaAplicativo&quot;).ToString]" in_Username="[v_Username]" />
+    <c:LoginOV sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="LoginOV_1" in_Password="[v_Password]" in_RutaAplicativo="[in_Config(&quot;RutaAplicativo&quot;).ToString]" in_Username="[v_Username]" />
   </Sequence>
 </Activity>
